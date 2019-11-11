@@ -2,10 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-using System.Security.Policy;
 using MembershipApp.Models;
 using MembershipApp.Tests.Integration.ClassFixtures;
-using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Xunit;
 
@@ -49,6 +47,7 @@ namespace MembershipApp.Tests.Integration
                     Assert.Equal(postResponseMember.Id, responseMember.Id);
                     Assert.Equal(postResponseMember.FirstName, responseMember.FirstName);
                     Assert.Equal(postResponseMember.LastName, responseMember.LastName);
+                    Assert.Equal(postResponseMember.FullName, responseMember.FullName);
                 }
             }
         }
@@ -87,10 +86,12 @@ namespace MembershipApp.Tests.Integration
                         Assert.Equal(postResponseMember.Id, firstMember.Id);
                         Assert.Equal(postResponseMember.FirstName, firstMember.FirstName);
                         Assert.Equal(postResponseMember.LastName, firstMember.LastName);
+                        Assert.Equal(postResponseMember.FullName, firstMember.FullName);
 
                         Assert.Equal(otherPostResponseMember.Id, secondMember.Id);
                         Assert.Equal(otherPostResponseMember.FirstName, secondMember.FirstName);
                         Assert.Equal(otherPostResponseMember.LastName, secondMember.LastName);
+                        Assert.Equal(otherPostResponseMember.FullName, secondMember.FullName);
                     }
 
 
@@ -101,8 +102,7 @@ namespace MembershipApp.Tests.Integration
         }
 
         [Fact]
-        public async void
-            Should_Return_NotFound_Status_Code_When_Get_Response_Is_Made_To_Valid_Route_And_Member_Does_Not_Exist()
+        public async void Should_Return_NotFound_Status_Code_When_Get_Response_Is_Made_To_Valid_Route_And_Member_Does_Not_Exist()
         {
             using (var getHttpClient = new HttpClient {BaseAddress = new Uri(_url)})
             {

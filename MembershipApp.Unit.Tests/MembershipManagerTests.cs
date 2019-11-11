@@ -12,7 +12,7 @@ namespace MembershipApp.Tests
         }
         
         [Fact]
-        public void Should_CreateNewMember_WithNameAndId()
+        public void Should_Create_NewMember_With_Name_Id_And_FullName()
         {
             // Act
             var newMember = _membershipManager.CreateNewMember("Test", "Member");
@@ -21,13 +21,14 @@ namespace MembershipApp.Tests
             Assert.Equal(1,newMember.Id);
             Assert.Equal("Test", newMember.FirstName);
             Assert.Equal("Member", newMember.LastName);
+            Assert.Equal("Test Member", newMember.FullName);
         }
         
         [Fact]
         public void Should_CreateNewMemberWithNextId_WhenMembershipAppHasNoMembers()
         {
             // Arrange
-            var newMember = _membershipManager.CreateNewMember("Test", "Member");
+            _membershipManager.CreateNewMember("Test", "Member");
             var nextNewMember = _membershipManager.CreateNewMember("Other", "Member");
             
             // Assert

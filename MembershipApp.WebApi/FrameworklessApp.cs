@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using Microsoft.Configuration.ConfigurationBuilders;
+using Microsoft.Extensions.Configuration;
 
 namespace MembershipApp.WebApi
 {
@@ -28,8 +29,14 @@ namespace MembershipApp.WebApi
 
         public void Listen()
         {
+            var config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", true, true)
+                .Build();
+            
+            var url = config["AppSettings:url"];
+            
             var server = new HttpListener();
-            server.Prefixes.Add("http://localhost:8080/");
+            server.Prefixes.Add(url);
             server.Start();
             Console.WriteLine("Listening....");
 

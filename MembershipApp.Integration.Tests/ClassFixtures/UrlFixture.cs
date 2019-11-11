@@ -9,11 +9,9 @@ namespace MembershipApp.Tests.Integration.ClassFixtures
             var config = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", true, true)
                 .Build();
-
-
             Url = config["AppSettings:url"];
         }
 
-        public string Url { get; private set; }
+        public string Url { get; }
     }
 }

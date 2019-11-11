@@ -29,6 +29,8 @@ namespace MembershipApp.WebApi
             {
                 new PatchResponse()
             };
+            
+            
 
             var apiGetResponseFactory = new ApiGetResponseFactory(getQueryActions);
             var apiDeleteResponseFactory = new ApiDeleteResponseFactory(deleteQueryActions);

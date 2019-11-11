@@ -46,6 +46,9 @@ namespace MembershipApp.Tests.Integration
                     // Assert
                     Assert.Equal(HttpStatusCode.OK, patchResponse.StatusCode);
                     Assert.Equal(updatedFirstNameMember.FirstName, updatedMember.FirstName);
+                    Assert.Equal(_testMember.LastName, updatedMember.LastName);
+                    Assert.Equal($"{updatedFirstNameMember.FirstName} {_testMember.LastName}", updatedMember.FullName);
+                    Assert.Equal(postResponseMember.Id, updatedMember.Id);
                 }
             }
         }

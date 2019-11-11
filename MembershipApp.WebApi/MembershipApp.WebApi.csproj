@@ -16,4 +16,10 @@
       <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.6.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="appsettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>

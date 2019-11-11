@@ -25,6 +25,9 @@ namespace MembershipApp.WebApi.PatchResponses
                 var memberFieldToEdit = JsonConvert.DeserializeObject<Member>(requestBody);
                 memberToEdit.FirstName = memberFieldToEdit.FirstName ?? memberToEdit.FirstName;
                 memberToEdit.LastName = memberFieldToEdit.LastName ?? memberToEdit.LastName;
+                memberToEdit.FullName =
+                    MembershipManager.Instance.BuildFullName(memberToEdit.FirstName, memberToEdit.LastName);
+                
                 _statusCode = HttpStatusCode.OK;
                 var updatedMemberString = JsonConvert.SerializeObject(memberToEdit);
                 

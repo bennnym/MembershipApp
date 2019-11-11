@@ -33,6 +33,7 @@ namespace MembershipApp
                 Id = GetNextValidId(),
                 FirstName = firstName,
                 LastName = lastName,
+                FullName = BuildFullName(firstName, lastName)
             };
             
             _membersDataBase.Add(newMember);
@@ -67,6 +68,11 @@ namespace MembershipApp
                 return 1;
             }
             
+        }
+
+        public string BuildFullName(string firstName, string surname)
+        {
+            return $"{firstName} {surname}";
         }
     }
 }

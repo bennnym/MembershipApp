@@ -10,32 +10,33 @@ namespace MembershipApp.WebApi
     {
         static void Main(string[] args)
         {
-            var getQueryActions = new List<IApiGetResponse>
+            var getQueryResponses = new List<IApiGetResponse>
             {
                 new AllMembersQuery(), new SingleMemberQuery()
             };
 
-            var deleteQueryActions = new List<IApiDeleteResponse>
+            var deleteQueryResponses = new List<IApiDeleteResponse>
             {
                 new DeleteMemberResponse()
             };
 
-            var postQueryActions = new List<IApiPostResponse>
+            var postQueryResponses = new List<IApiPostResponse>
             {
                 new CreateNewMemberResponse()
             };
 
-            var patchQueryActions = new List<IApiPatchResponse>
+            var patchQueryResponses = new List<IApiPatchResponse>
             {
                 new PatchResponse()
             };
             
             
 
-            var apiGetResponseFactory = new ApiGetResponseFactory(getQueryActions);
-            var apiDeleteResponseFactory = new ApiDeleteResponseFactory(deleteQueryActions);
-            var apiPostResponseFactory = new ApiPostResponseFactory(postQueryActions);
-            var apiPatchResponseFactory = new ApiPatchResponseFactory(patchQueryActions);
+            var apiGetResponseFactory = new ApiGetResponseFactory(getQueryResponses);
+            var apiDeleteResponseFactory = new ApiDeleteResponseFactory(deleteQueryResponses);
+            var apiPostResponseFactory = new ApiPostResponseFactory(postQueryResponses);
+            var apiPatchResponseFactory = new ApiPatchResponseFactory(patchQueryResponses);
+            
             var frameworkLessApp = new FrameworklessApi(apiGetResponseFactory, apiDeleteResponseFactory,
                 apiPostResponseFactory, apiPatchResponseFactory);
 

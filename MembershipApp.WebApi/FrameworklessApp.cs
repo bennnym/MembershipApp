@@ -32,9 +32,9 @@ namespace MembershipApp.WebApi
             var config = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", true, true)
                 .Build();
-            
-            var url = config["AppSettings:url"];
-            
+
+            var url = config["AppSettings:prod"];
+
             var server = new HttpListener();
             server.Prefixes.Add(url);
             server.Start();
@@ -86,8 +86,6 @@ namespace MembershipApp.WebApi
                         _apiDeleteResponseFactory.CreateDeleteResponseObject(apiRequestedResourceName, string.Empty);
                     deleteResponse.ProcessRequest(_response, string.Empty);
                 }
-            
-
             }
 
             if (_request.HttpMethod == "POST")

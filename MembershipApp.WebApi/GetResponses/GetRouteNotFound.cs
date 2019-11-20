@@ -15,7 +15,7 @@ namespace MembershipApp.WebApi.GetResponses
 
         public bool IsValid(string resourceName, string[] queryParams)
         {
-            throw new System.NotImplementedException();
+            return false;
         }
     }
 }

@@ -33,7 +33,7 @@ namespace MembershipApp.WebApi
                 .AddJsonFile("appsettings.json", true, true)
                 .Build();
 
-            var url = config["AppSettings:prod"];
+            var url = config["AppSettings:local"];
 
             var server = new HttpListener();
             server.Prefixes.Add(url);
